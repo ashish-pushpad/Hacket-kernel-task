@@ -56,15 +56,17 @@
 <table> 
   <tr> 
     <th>Task Name</th>
+    <th> Description</th>
     <th>Status</th>
   </tr>
   {{#each taskData}}
     <tr> 
       <td>{{title}}</td>
+      <td> {{description}}</td>
       {{#if isPending}}
-        <td style="color: rgb(98, 236, 52);">Completed</td>
+        <td style="color: rgb(98, 236, 52);"> <a href=""> Completed </a></td>
       {{else}}
-        <td style="color: rgb(205, 199, 25);">Pending</td>
+        <td style="color: rgb(205, 199, 25);"><a> Pending </a></td>
       {{/if}}
     </tr>
   {{/each}}

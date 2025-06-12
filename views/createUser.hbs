@@ -17,6 +17,19 @@
         justify-content: space-evenly;
         align-items: center;
     }
+    #main{
+      display: flex;
+      justify-self: center;
+      align-items: center;
+      margin-top: 50px;
+       font-size: medium;
+    }
+    #main input{
+      margin-bottom: 10px;
+      height: 20px;
+      width: 200px;
+      font-size: medium;
+    }
     </style>
 </head>
 <body>
@@ -24,26 +37,60 @@
     <div style="width: 30%;">TaskUs</div>
     <div id="r-nav" style="width: 60%; display:flex; justigy-content:space-evenly;">
       <a href="/">Home</a>
-      <a href="/userdata" > See Users </a>
-      <a href="/task/savetask"> Asign Task To User</a>
+      <a href="/user/fetch" > See Users </a>
+      <a href="/assignTask"> Asign Task To User</a>
       <a href="/exportdata">Export Data in Excel</a>
     </div>
   </nav>
 
-   <div>
+   <div id="main">
     <form action="http://localhost:3000/user/save" method="post">
       <label for="name">User Name</label><br/>
-      <input type="text" id="name" name="name" placeholder="User name" required />
+      <input type="text" id="name" name="name" placeholder="User name" required /> <br>
 
-      <label for="email">User Email</label>
-      <input type="email" name="email" id="email" placeholder="yourmail@example.com" required />
+      <label for="email">User Email</label><br>
+      <input type="email" name="email" id="email" placeholder="yourmail@example.com" onchange="checkEmail(event)" required />
+      <span id="ewarning" style="color: red; display: none;">Invalid email </span><br>
 
-      <label for="mobile">User Mobile</label>
-      <input type="number" name="mobile" id="mobile" placeholder="xxxxxxxxxx" required />
+      <label for="mobile">User Mobile</label><br>
+      <input  type="number" name="mobile" id="mobile" placeholder="xxxxxxxxxx" onchange="checkMobile(event)" required />
+      <span id="mwarning" style="color: red; display: none;">Invalid Mobile </span><br>
+  
 
-      <button type="submit">Submit Form</button>
+      <button id="button"  type="submit">Submit Form</button><br>
     </form>
   </div> 
 
+<script> 
+  function checkEmail(e){
+   //alert("heyy")
+    const email = e.target.value
+     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+     
+     const warning=document.getElementById("ewarning")
+    if (!isValid) {
+      warning.style.display = "inline";
+      document.getElementById('button').disabled = true;
+    } else {
+      warning.style.display = "none";
+      document.getElementById('button').disabled = false;
+  }
+}
+  function checkMobile(e){
+    //alert("hey")
+      const mobile = e.target.value;
+      //{{!-- console.log(mobile) --}}
+      const isValid = /^[6-9]\d{9}$/.test(mobile);
+         const warning=document.getElementById("mwarning")
+      if(isValid){
+        warning.style.display = "none"
+        document.getElementById('button').disabled = false;
+      }
+      else{
+        warning.style.display = "inline"
+        document.getElementById('button').disabled = true;
+      }
+  }
+</script>
 </body>
 </html>
