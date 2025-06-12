@@ -1,0 +1,24 @@
+{
+  "name": "hacker-kernel",
+  "version": "1.0.0",
+  "description": "this is a task that i have to asigh",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon api.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ashish",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "handlebars": "^4.7.8",
+    "hbs": "^4.2.0",
+    "knex": "^3.1.0",
+    "nodemon": "^3.1.10",
+    "objection": "^3.1.5",
+    "pg": "^8.16.0"
+  }
+}

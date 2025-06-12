@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Task</title>
+    <style> 
+                nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #f2f2f2;
+    }
+      #r-nav{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+  table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: sans-serif;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+</style>
+</head>
+<body>
+      <nav>
+    <div style="width: 30%;">TaskUs</div>
+    <div id="r-nav" style="width: 60%; display:flex; justigy-content:space-evenly;">
+      <a href="/">Home</a>
+      <a href="/createuser" > Create User </a>
+      <a href="/user/fetch"> See User</a>
+      <a href="/exportdata">Export Data in Excel</a>
+    </div>
+ </nav>
+ 
+   
+<table> 
+  <tr> 
+    <th>Task Name</th>
+    <th>Status</th>
+  </tr>
+  {{#each taskData}}
+    <tr> 
+      <td>{{title}}</td>
+      {{#if isPending}}
+        <td style="color: rgb(98, 236, 52);">Completed</td>
+      {{else}}
+        <td style="color: rgb(205, 199, 25);">Pending</td>
+      {{/if}}
+    </tr>
+  {{/each}}
+</table>
+</body>
+</html>

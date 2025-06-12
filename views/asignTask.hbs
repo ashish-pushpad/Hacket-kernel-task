@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asigh Task</title>
+    <style> 
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aliceblue;
+            height: 35px;
+        }
+          #r-nav{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+  form {
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: sans-serif;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  input[type="text"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+  }
+
+  textarea {
+    min-height: 60px;
+  }
+
+  button {
+    padding: 8px 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
+</head>
+<body>
+    <nav>
+    <div style="width: 30%;">TaskUs</div>
+    <div id="r-nav" style="width: 60%; display:flex; justigy-content:space-evenly;">
+      <a href="http://localhost:3000/" > Home</a>
+      <a href="/createuser">Create User</a>
+      <a href="http://localhost:3000/user/fetch" > See Users </a>
+      <a href="/exportdata">Export Data in Excel</a>
+    </div>
+  </nav>
+<br> <br/>
+     <form action="/task/savetask" method="post">
+  <label for="user">User</label>
+  <select name="userId" id="user">
+    {{#each userdata}}
+      <option value="{{id}}">{{name}}</option>
+    {{/each}}
+  </select>
+
+  <label for="task">Task Title</label>
+  <input type="text" name="title" id="task" />
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description"></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
